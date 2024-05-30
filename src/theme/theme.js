@@ -1,8 +1,13 @@
 import { createTheme } from "@mui/material/styles";
 import { getPalette } from "./palette";
 
-const theme = createTheme({
-  palette: getPalette("light"),
-});
+export function themeSettings(mode) {
+  return {
+    palette: getPalette(mode),
+  };
+}
+// const theme = createTheme({
+//   palette: getPalette("light"),
+// });
 
-export default theme;
+// export default theme;

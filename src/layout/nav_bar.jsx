@@ -4,8 +4,18 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Switch from '@mui/material/Switch';
+import { useDispatch } from 'react-redux';
+import {toogleTheme} from "../redux/reducers/theme_slice"
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 export default function NavBar() {
+    const [checked, setChecked] = React.useState(true);
+    const dispatch = useDispatch();
+
+    const handleChange = (event) => {
+        setChecked(event.target.checked);
+        dispatch(toogleTheme());
+        // console.log("switch check", event.target.checked);
+    };
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -14,7 +24,11 @@ export default function NavBar() {
                         To-Do
                     </Typography>
                     <Box sx={{ display: "flex", alignItems: "center" }}>
-                        <Switch {...label} defaultChecked color='secondary.main' />
+                        <Switch {...label} color='warning'
+                            checked={checked}
+                            onChange={handleChange}
+                            inputProps={{ 'aria-label': 'controlled' }}
+                        />
                         <Typography>light</Typography>
                     </Box>
                 </Toolbar>
