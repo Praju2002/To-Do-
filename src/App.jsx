@@ -1,5 +1,5 @@
 
-// import './App.css'
+import './App.css'
 import { Route } from "react-router-dom";
 import {
   createBrowserRouter,

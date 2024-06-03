@@ -11,7 +11,7 @@ export const themeSlice = createSlice({
   reducers: {
     // Creating Reducer for toogling theme
     toogleTheme: (state) => {
-      console.log("Theme Toggled");
+      // console.log("Theme Toggled");
       state.mode = state.mode === "dark" ? "light" : "dark";
       localStorage.setItem("themeMode",state.mode)
     },
