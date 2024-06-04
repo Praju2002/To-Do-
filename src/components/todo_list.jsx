@@ -1,10 +1,16 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import TodoItem from './todo_item'
+
 function TodoList({ todoList, setTodoList }) {
     const handleTodoDelete = (id) => {
-        const newList = todoList.filter((item) => item.id !== id)
+        const newList = todoList.filter((item) => item.id !== id);
         setTodoList(newList);
+        try {
+            localStorage.setItem("todoList", JSON.stringify(newList));
+        } catch (err) {
+            console.log(err);
+        }
     };
     const handleTodoDone = (id) => {
         const newList = todoList.map((item) => {
@@ -14,7 +20,13 @@ function TodoList({ todoList, setTodoList }) {
             return item;
         });
         setTodoList(newList);
+        try {
+            localStorage.setItem("todoList", JSON.stringify(newList));
+        } catch (err) {
+            console.log(err);
+        }
     };
+
     const filteredTodoList = todoList.filter((item) => item.isDone === false);
     return (
         <Box sx={{ width: "100%" }}>
@@ -27,7 +39,6 @@ function TodoList({ todoList, setTodoList }) {
                             item={item} handleTodoDelete={handleTodoDelete} handleTodoDone={handleTodoDone} />
                     ))
                 }
-
             </Box>
         </Box>
     )

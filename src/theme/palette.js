@@ -23,7 +23,7 @@ export function getPalette(mode) {
   // For Light Mode
   return {
     primary: {
-      main: "#6B3EA6",
+      main: "#c7aad6",
       dark:"#4E2C7E"
     },
     secondary: {
